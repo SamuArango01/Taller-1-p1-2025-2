@@ -6,9 +6,10 @@ from .models import Movie
 # Create your views here.
 
 def home(request):
-    # return HttpResponse('<h1>Welcome to home page</h1>')
-    # return render(request, 'home.html')
-    # return render(request, 'home.html', {'name': 'Samu Arango'})
+    #return HttpResponse('<h1>Welcome to Home Page</h1>')
+    #return render(request, 'home.html')
+    #return render(request, 'home.html', {'name': 'Samu Arango'})
+
     searchTerm = request.GET.get('searchMovie')
     if searchTerm:
         movies = Movie.objects.filter(title__icontains=searchTerm)
@@ -18,4 +19,4 @@ def home(request):
 
 
 def about(request):
-    return HttpResponse('<h1>About Movie Reviews</h1><p>This is a project to review movies.</p>')
+    return HttpResponse('<h1>Welcome to About Page</h1>')
