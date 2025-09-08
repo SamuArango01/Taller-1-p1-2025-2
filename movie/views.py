@@ -8,12 +8,21 @@ import json
 
 
 def home(request):
-    searchTerm = request.GET.get('searchmovie')
+    # tomar el término de búsqueda del parámetro GET
+    searchTerm = request.GET.get('searchMovie')
+
     if searchTerm:
+        # filtrar películas cuyo título contenga el término
         movies = Movie.objects.filter(title__icontains=searchTerm)
     else:
+        # si no hay búsqueda, mostrar todas
         movies = Movie.objects.all()
-    return render(request, 'home.html', {'searchTerm': searchTerm, 'movies': movies})
+
+    context = {
+        'movies': movies,
+        'searchTerm': searchTerm
+    }
+    return render(request, 'home.html', context)
 
 
 def about(request):
